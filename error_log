@@ -1,0 +1,5 @@
+[08-May-2018 17:43:53 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 've' (T_STRING) in /home/sidelear/public_html/sibidan/application/config/config.php on line 67
+[08-May-2018 18:16:20 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ''] == "NULL"){' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/sidelear/public_html/sibidan/application/models/User_model.php on line 36
+[08-May-2018 18:21:04 Asia/Jakarta] PHP Parse error:  syntax error, unexpected end of file in /home/sidelear/public_html/sibidan/application/models/User_model.php on line 64
+[11-May-2018 14:43:33 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/sidelear/public_html/sibidan/application/views/Management/content.php on line 305
+[11-May-2018 14:44:07 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/sidelear/public_html/sibidan/application/views/Management/content.php on line 305
