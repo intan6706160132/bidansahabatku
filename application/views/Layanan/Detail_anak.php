@@ -106,9 +106,32 @@
 			                        <td style="text-align: center;"><?php echo $row['SUHU'];?></td>
 			                        <td style="text-align: center;"><?php if($row['RESPIRASI'] == 'Y') echo "Normal"; elseif($row['RESPIRASI'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
 			                        <td style="text-align: center;"><?php if($row['JANTUNG'] == 'Y') echo "Normal"; elseif($row['JANTUNG'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
-			                        <td style="text-align: center;<?php if($temp > $row['BB'] && $i != 1) echo " background: #c91616"; elseif($temp < $row['BB']  && $i != 1) echo " background: #44e53b"; else echo " background: yellow"; ?>"><?php echo $row['BB']." kg"; $temp = $row['BB'];?></td>
-			                        <td style="text-align: center;<?php if($temp2 > $row['BB'] && $i != 1) echo " background: #c91616"; elseif($temp2 < $row['BB']  && $i != 1) echo " background: #44e53b"; else echo " background: yellow"; ?>"><?php echo $row['TB']." cm";  $temp2 = $row['TB'];?></td>
-			                        <td style="text-align: center;<?php if($temp3 > $row['BB'] && $i != 1) echo " background: #c91616"; elseif($temp3 < $row['BB']  && $i != 1) echo " background: #44e53b"; else echo " background: yellow"; ?>"><?php echo $row['LK']." cm";  $temp3 = $row['LK'];?></td>
+			                        <td style="text-align: center;
+                              <?php 
+                                if($temp > $row['BB'] && $i != 1) 
+                                  echo " background: #c91616"; 
+                                elseif($temp < $row['BB']  && $i != 1) 
+                                  echo " background: #44e53b"; 
+                                else 
+                                  echo " background: yellow"; ?>"><?php echo $row['BB']." kg"; 
+                                $temp = $row['BB'];?></td>
+			                        <td style="text-align: center;
+                              <?php 
+                                if($temp2 > $row['TB'] && $i != 1) 
+                                  echo " background: #c91616"; 
+                                elseif($temp2 < $row['TB']  && $i != 1) 
+                                  echo " background: #44e53b"; 
+                                else
+                                 echo " background: yellow"; ?>">
+                               <?php echo $row['TB']." cm";  $temp2 = $row['TB'];?></td>
+			                        <td style="text-align: center;
+                              <?php 
+                              if($temp3 > $row['LK'] && $i != 1) 
+                                echo " background: #c91616"; 
+                              elseif($temp3 < $row['LK']  && $i != 1) 
+                                echo " background: #44e53b"; 
+                              else 
+                                echo " background: yellow"; ?>"><?php echo $row['LK']." cm";  $temp3 = $row['LK'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['KPSP'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['TINDAKAN'];?></td>
 			                        <?php 

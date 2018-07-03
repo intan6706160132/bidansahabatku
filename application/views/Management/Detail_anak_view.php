@@ -99,6 +99,7 @@
             <thead>
             <tr>
                 <th style="text-align: center;">No.</th>
+                <th style="text-align: center;">No. MedReg</th>
                 <th style="text-align: center;">Tanggal</th>
                 <th style="text-align: center;">Keadaan Umum</th>
                 <th style="text-align: center;">Suhu</th>
@@ -113,21 +114,29 @@
             <?php
             if(isset($data_pelayanan)){
                 $i = 1;
+                $tmpBB = 0;
+                $tmpTB = 0; 
+                $tmpLK = 0;
                 foreach ($data_pelayanan as $row) {
                     ?>
                     <tr>
                         <td style="text-align: center;"><?php echo $i;?></td>
+                        <td style="text-align: center;"><?php echo $row['NO_MEDREG'];?></td>
                         <td style="text-align: center;"><?php echo $row['TGL_KUNJUNGAN'];?></td>
                         <td style="text-align: center;"><?php echo $row['KEADAAN_UMUM'];?></td>
                         <td style="text-align: center;"><?php echo $row['SUHU'];?></td>
                         <td style="text-align: center;"><?php echo $row['RESPIRASI'];?></td>
                         <td style="text-align: center;"><?php echo $row['JANTUNG'];?></td>
-                        <td style="text-align: center;"><?php echo $row['BB'];?></td>
-                        <td style="text-align: center;"><?php echo $row['TB'];?></td>
-                        <td style="text-align: center;"><?php echo $row['LK'];?></td>
+                        <td style="text-align: center;background:<?php if($i != 1) {if($tempBB > $row['BB']) echo "#c91616"; elseif ($tempBB < $row['BB']) echo "#44e53b"; else echo "yellow"; } ?>"><?php echo $row['BB'];?></td>
+                        <td style="text-align: center;background:<?php if($i != 1) {if($tempTB > $row['TB']) echo "#c91616"; elseif ($tempTB < $row['TB']) echo "#44e53b"; else echo "yellow"; } ?>"><?php echo $row['TB'];?></td>
+                        <td style="text-align: center;background:<?php if($i != 1) {if($tempLK > $row['LK']) echo "#c91616"; elseif ($tempLK < $row['LK']) echo "#44e53b"; else echo "yellow"; } ?>"><?php echo $row['LK'];?></td>
                     </tr>
 
-                    <?php 		$i++;
+                    <?php 		
+                        $i++;
+                        $tempBB = $row['BB'];
+                        $tempTB = $row['TB'];
+                        $tempLK = $row['LK'];
                 }
             }
             ?>
