@@ -94,6 +94,9 @@
 	                <?php
 	                	if(isset($data_pelayanan)){
 							$i = 1;
+							$temp = 0;
+							$temp2 = 0;
+							$temp3 = 0;
 							foreach ($data_pelayanan as $row) {			
 					?>
 		                    	<tr>
@@ -103,9 +106,9 @@
 			                        <td style="text-align: center;"><?php echo $row['SUHU'];?></td>
 			                        <td style="text-align: center;"><?php if($row['RESPIRASI'] == 'Y') echo "Normal"; elseif($row['RESPIRASI'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
 			                        <td style="text-align: center;"><?php if($row['JANTUNG'] == 'Y') echo "Normal"; elseif($row['JANTUNG'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
-			                        <td style="text-align: center;"><?php echo $row['BB']." kg";?></td>
-			                        <td style="text-align: center;"><?php echo $row['TB']." cm";?></td>
-			                        <td style="text-align: center;"><?php echo $row['LK']." cm";?></td>
+			                        <td style="text-align: center;<?php if($temp > $row['BB'] && $i != 1) echo " color: red"; elseif($temp < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['BB']." kg"; $temp = $row['BB'];?></td>
+			                        <td style="text-align: center;<?php if($temp2 > $row['BB'] && $i != 1) echo " color: red"; elseif($temp2 < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['TB']." cm";  $temp2 = $row['TB'];?></td>
+			                        <td style="text-align: center;<?php if($temp3 > $row['BB'] && $i != 1) echo " color: red"; elseif($temp3 < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['LK']." cm";  $temp3 = $row['LK'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['KPSP'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['TINDAKAN'];?></td>
 			                        <?php 

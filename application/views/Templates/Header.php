@@ -175,14 +175,16 @@
                         }}?>
                         <?php
                             if(isset($_SESSION['status']) && ($_SESSION['status'] == "ortu")){ ?>
-<!--                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('Ortu_controller/show_ortu_data_anak/'.$_SESSION['id_pengguna'])?>">Data Anak</a></li> -->
+                                <li><a class="waves-effect waves-dark" href="<?php $title = "pelayanan"; echo base_url('Layanan_controller/show_layanan_bayi/'.$title)?>">Data Anak</a></li>
+<!--
                                 <li class="dropdown">
-		                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Layanan<b class="caret"></b></a>
+		                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Data Bayi<b class="caret"></b></a>
 		                            <ul class="dropdown-menu">
 		                                <li><a class="waves-effect waves-dark" href="<?php $title = "pelayanan"; echo base_url('Layanan_controller/show_layanan_bayi/'.$title)?>">Pelayanan Bayi</a></li>
 		                                <li><a class="waves-effect waves-dark" href="<?php $title = "imunisasi"; echo base_url('Layanan_controller/show_layanan_bayi/'.$title)?>">Imunisasi Bayi</a></li>
 		                            </ul>
 		                        </li>
+-->
                                 <li class="dropdown">
                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Akun<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
