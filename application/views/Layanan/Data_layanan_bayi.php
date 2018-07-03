@@ -17,6 +17,27 @@
         });
 
     });
+    $(document).ready(function() {
+    $("#inputangka").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl/cmd+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+C
+            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+X
+            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
     
 </script>
 <style type="text/css">
@@ -58,6 +79,9 @@
 	                <?php
 	                	if(isset($data_pelayanan)){
 							$i = 1;
+							$temp = 0;
+							$temp2 = 0;
+							$temp3 = 0;
 							foreach ($data_pelayanan as $row) {			
 					?>
 		                    	<tr>
@@ -67,9 +91,9 @@
 			                        <td style="text-align: center;"><?php echo $row['SUHU'];?></td>
 			                        <td style="text-align: center;"><?php if($row['RESPIRASI'] == 'Y') echo "Normal"; elseif($row['RESPIRASI'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
 			                        <td style="text-align: center;"><?php if($row['JANTUNG'] == 'Y') echo "Normal"; elseif($row['JANTUNG'] == 'T') echo "Tidak Normal"; else echo "-";?></td>
-			                        <td style="text-align: center;"><?php echo $row['BB']." kg";?></td>
-			                        <td style="text-align: center;"><?php echo $row['TB']." cm";?></td>
-			                        <td style="text-align: center;"><?php echo $row['LK']." cm";?></td>
+			                        <td style="text-align: center;<?php if($temp > $row['BB'] && $i != 1) echo " color: red"; elseif($temp < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['BB']." kg"; $temp = $row['BB'];?></td>
+			                        <td style="text-align: center;<?php if($temp2 > $row['BB'] && $i != 1) echo " color: red"; elseif($temp2 < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['TB']." cm";  $temp2 = $row['TB'];?></td>
+			                        <td style="text-align: center;<?php if($temp3 > $row['BB'] && $i != 1) echo " color: red"; elseif($temp3 < $row['BB']  && $i != 1) echo " color: green"; else echo " color: yellow"; ?>"><?php echo $row['LK']." cm";  $temp3 = $row['LK'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['KPSP'];?></td>
 			                        <td style="text-align: center;"><?php echo $row['TINDAKAN'];?></td>
 			                        <?php 
@@ -122,15 +146,15 @@
           <div id="form1">
             <div class="form-group">
               <label>Tanggal Kunjugan</label>
-              <input class="form-control" type="date" name="tglkunjung"/>
+              <input class="form-control" type="date" name="tglkunjung" required/>
             </div>
             <div class="form-group">
               <label>Keadaan Umum </label>
-              <input class="form-control" type="text" name="kead" placeholder="Masukkan Keterangan"/>
+              <input class="form-control" type="text" name="kead" placeholder="Masukkan Keterangan" required/>
             </div>
             <div class="form-group">
               <label>Suhu </label>
-              <input class="form-control" type="text" name="suh" placeholder="Masukkan Suhu"/>
+              <input id="inputangka" class="form-control" type="text" name="suh" placeholder="Masukkan Suhu" required/>
             </div>
             <div class="form-group">
               <label>Respirasi</label>
@@ -150,23 +174,23 @@
             </div>
             <div class="form-group">
               <label>BB </label>
-              <input class="form-control" type="text" name="bb" placeholder="Masukkan BB"/>
+              <input id="inputangka" class="form-control" type="text" name="bb" placeholder="Masukkan BB" required/>
             </div>
             <div class="form-group">
               <label>TB </label>
-              <input class="form-control" type="text" name="tb" placeholder="Masukkan TB"/>
+              <input id="inputangka" class="form-control" type="text" name="tb" placeholder="Masukkan TB" required/>
             </div>
             <div class="form-group">
               <label>LK </label>
-              <input class="form-control" type="text" name="lk" placeholder="Masukkan LK"/>
+              <input id="inputangka" class="form-control" type="text" name="lk" placeholder="Masukkan LK" required/>
             </div>
             <div class="form-group">
               <label>KPSP </label>
-              <input class="form-control" type="text" name="kpsp" placeholder="Masukkan KPSP"/>
+              <input class="form-control" type="text" name="kpsp" placeholder="Masukkan KPSP" required/>
             </div>
             <div class="form-group">
               <label>Tindankan </label>
-              <input class="form-control" type="text" name="tin" placeholder="Masukkan Tindakan"/>
+              <input class="form-control" type="text" name="tin" placeholder="Masukkan Tindakan" required/>
             </div>
             <p><label></label><input type="submit" name="submit" class="btn btn-primary" value="Simpan"/></p>
             <input type="hidden" value="<?php echo $id_anak; ?>" name="idanak" />

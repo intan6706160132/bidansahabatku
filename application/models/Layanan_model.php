@@ -35,6 +35,8 @@
 				$str = $str." WHERE `anak`.`ID_ORANG_TUA` = '$idortu'";
 
 			}
+			
+			$str = $str." ORDER BY TGL_LAHIR";
 
 			$result = $this->db->query($str);
 

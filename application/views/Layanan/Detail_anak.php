@@ -203,10 +203,11 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-6">
-                <label><p>id_anak</p></label>
+                <label><p>Nama Anak</p></label>
               </div>
               <div class="col-md-6">
-                <input type="text" name="id_anak" value="<?php echo $id_anak;?>">
+	            <input type="text" name="nama" value="<?php echo ucwords($detail_anak->NAMA_ANAK)?>" readonly>
+                <input type="hidden" name="id_anak" value="<?php echo $id_anak;?>">
                 <input type="hidden" name="title" value="<?php echo $title;?>">
 <!--                 <input type="hidden" name="detail" value="detail"> -->
               </div>
@@ -218,7 +219,7 @@
                 <label><p>Jenis Imu</p></label>
               </div>
               <div class="col-md-6">
-                <input type="text" name="jenis_imu" id="jenis_imu">
+                <input type="text" name="jenis_imu" id="jenis_imu" readonly>
               </div>
             </div>
           </div>
