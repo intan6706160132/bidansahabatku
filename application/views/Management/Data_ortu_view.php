@@ -73,6 +73,8 @@
 
                     <th style="text-align: center;">Anak</th>
 
+                    <th style="text-align: center;">Alamat Ibu / Ayah</th>
+
                     <th style="text-align: center; width:75px;">Register</th>
 
                     <th style="text-align: center; width:100px;">Aksi</th>
@@ -121,6 +123,10 @@
 
                         ?>
 
+                    </td>
+
+                    <td>
+                        <?php echo $ortu['ALAMAT_IBU']." / ". $ortu['ALAMAT_AYAH'];?>
                     </td>
 
                     <td style="text-align: center;">
