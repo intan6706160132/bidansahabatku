@@ -150,7 +150,7 @@ class Management_model extends CI_Model
         $med = "";
         $jum = $this->db->query("select COUNT(NO_MEDREG) JLH from pengkajian")->row_array();
         if($jum['JLH'] == "NULL"){
-            $med = "00.00.01";
+            $med = "00.25.01";
         }
         $jlh = $jum['JLH'];
         $jlh++;
@@ -163,11 +163,11 @@ class Management_model extends CI_Model
         }elseif(strlen((string)$jlh) > 3) {
             $med = "00.".substr($str, 0,1).".".substr($str, 2,3);
         }elseif(strlen((string)$jlh) > 2) {
-            $med = "00.0".substr($str, 0).".".substr($str, 1,2);
+            $med = "00.2".substr($str, 0).".".substr($str, 1,2);
         }else if(strlen((string)$jlh) > 1){
-            $med = "00.00.".$str;
+            $med = "00.25.".$str;
         }else{
-            $med = "00.00.0".$str;
+            $med = "00.25.0".$str;
         }
         return $med;
     }

@@ -129,9 +129,16 @@
                     </td>
 
                     <td style="text-align: center;">
-
-                        <a href="<?php echo base_url('Management_controller/show_tambah_data_anak/'.$ortu['ID_ORANG_TUA'])?>" class="btn-table" title="Register Anak"><span class="fa fa-plus-square-o" aria-hidden="true"></span>
-
+                        <?php
+                        if(isset($_SESSION['status']) && (($_SESSION['status'] == "admin") || ($_SESSION['status'] == "bidan"))){
+                        if($_SESSION['status'] == "admin"){
+                        ?>
+                        <a href="<?php echo base_url('Management_controller/show_tambah_data_anak_admin/'.$ortu['ID_ORANG_TUA'])?>" class="btn-table" title="Register Anak"><span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                        <?php
+                        }else if($_SESSION['status'] == "bidan"){
+                        ?>
+                            <a href="<?php echo base_url('Management_controller/show_tambah_data_anak/'.$ortu['ID_ORANG_TUA'])?>" class="btn-table" title="Register Anak"><span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                        <?php }}?>
                     </td>
 
                     <td style="text-align: center;">
