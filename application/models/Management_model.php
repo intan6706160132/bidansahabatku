@@ -15,7 +15,7 @@ class Management_model extends CI_Model
         $query = $this->db->query($str);
         $data = $query->result_array();
         for($i = 0; $i < $query->num_rows(); $i++){
-            $str = "SELECT anak.NAMA_ANAK FROM anak WHERE anak.ID_ORANG_TUA = '".$data[$i]['ID_ORANG_TUA']."'";
+            $str = "SELECT anak.ID_ANAK, anak.NAMA_ANAK, anak.ANAK_KE FROM anak WHERE anak.ID_ORANG_TUA = '".$data[$i]['ID_ORANG_TUA']."'";
             $data[$i]['DATA_ANAK'] = $this->db->query($str)->result_array();
         }
         return $data;

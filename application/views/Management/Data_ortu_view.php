@@ -69,9 +69,7 @@
 
                     <th style="text-align: center; width:40px;">No.</th>
 
-                    <th style="text-align: center;">Nama Ibu</th>
-
-                    <th style="text-align: center;">Anak</th>
+                    <th style="text-align: center;">Nama Ibu / Anak</th>
 
                     <th style="text-align: center;">Alamat Ibu / Ayah</th>
 
@@ -99,32 +97,33 @@
 
                     <td><?php echo $i;?></td>
 
-                    <td><?php echo ucwords($ortu['NAMA_IBU']);?>
-
-                    <td>
+                    <td><?php echo ucwords($ortu['NAMA_IBU']);?> /
 
                         <?php
 
-                            for($i = 0; $i < count($ortu['DATA_ANAK']); $i++){
+                        for($i = 0; $i < count($ortu['DATA_ANAK']); $i++){
 
-                                if($i == (count($ortu['DATA_ANAK']) - 1 )){
+                            if($i == (count($ortu['DATA_ANAK']) - 1 )){
 
-                                    echo $ortu['DATA_ANAK'][$i]['NAMA_ANAK'];   
+                                ?>
+                                <a href="<?php echo base_url('Management_controller/show_detail_anak/'.$ortu['DATA_ANAK'][$i]['ID_ANAK'])?>" style="cursor: pointer;">
 
-                                }
-
-                                else{
-
-                                    echo $ortu['DATA_ANAK'][$i]['NAMA_ANAK']." / ";   
-
-                                }
+                                <?php echo $ortu['DATA_ANAK'][$i]['NAMA_ANAK'] ."(".$ortu['DATA_ANAK'][$i]['ANAK_KE'] .")" ;
 
                             }
 
+                            else{
+                                ?>
+                                <a href="<?php echo base_url('Management_controller/show_detail_anak/'.$ortu['DATA_ANAK'][$i]['ID_ANAK'])?>" style="cursor: pointer;">
+
+                                <?php echo $ortu['DATA_ANAK'][$i]['NAMA_ANAK'] ."(".$ortu['DATA_ANAK'][$i]['ANAK_KE'] .")  / ";
+
+                            }
+
+                        }
+
                         ?>
-
                     </td>
-
                     <td>
                         <?php echo $ortu['ALAMAT_IBU']." / ". $ortu['ALAMAT_AYAH'];?>
                     </td>
