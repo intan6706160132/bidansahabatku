@@ -40,7 +40,7 @@ class Management_model extends CI_Model
     }
 
     public function get_data_anak($id_ortu){
-        $result = $this->db->query("SELECT * FROM `anak` WHERE ID_ORANG_TUA='" . $id_ortu . "'");
+        $result = $this->db->query("SELECT * FROM `anak` WHERE ID_ORANG_TUA='" . $id_ortu . "' order by ANAK_KE");
         if ($result) {
             return $result->result_array();
         } else {
