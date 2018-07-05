@@ -542,86 +542,36 @@ class Management_controller extends CI_Controller
             date_default_timezone_set('Asia/Jakarta');
 
             $jam = date("H:m");
+            if (isset($_SESSION['status']) && (($_SESSION['status'] == "admin") || ($_SESSION['status'] == "bidan"))) {
+                if ($_SESSION['status'] == "admin") {
+                    $data_reg = array(
 
-            $data_reg = array(
+                        'NO_MEDREG' => $this->input->post('NO_MEDREG'),
 
-                'NO_MEDREG' => $this->Management_model->get_no_medreg(),
+                        'ID_BIDAN' => $_SESSION['id_pengguna'],
 
-                'ID_BIDAN' => $_SESSION['id_pengguna'],
+                        'TANGGAL_KAJIAN' => $day,
 
-                'TANGGAL_KAJIAN' => $day,
+                        'JAM' => $jam,
 
-                'JAM' => $jam,
+                        'ID_ANAK' => $this->input->post('ID_ANAK'),
+                    );
+                } else if ($_SESSION['status'] == "bidan") {
+                    $data_reg = array(
 
-                'ID_ANAK' => $this->input->post('ID_ANAK'),
+                        'NO_MEDREG' => $this->Management_model->get_no_medreg(),
 
-            );
+                        'ID_BIDAN' => $_SESSION['id_pengguna'],
 
-            $this->Management_model->insert_anak($data);
+                        'TANGGAL_KAJIAN' => $day,
 
-            $this->Management_model->insert_reg($data_reg);
+                        'JAM' => $jam,
 
+                        'ID_ANAK' => $this->input->post('ID_ANAK'),
 
-
-        }
-
-        redirect('Management_controller/show_data_ortu');
-
-    }
-
-    function tambah_data_anak_admin()
-
-    {
-
-        if (isset($_POST) && !empty($_POST)) {
-
-            $data = array(
-
-                'NAMA_ANAK' => $this->input->post('NAMA_ANAK'),
-
-                'TGL_LAHIR' => $this->input->post('TGL_LAHIR'),
-
-                'TEMPAT_LAHIR_ANAK' => $this->input->post('TEMPAT_LAHIR_ANAK'),
-
-                'JK' => $this->input->post('JK'),
-
-                'BBL' => $this->input->post('BBL'),
-
-                'TBL' => $this->input->post('TBL'),
-
-                'LK' => $this->input->post('LK'),
-
-                'ANAK_KE' => $this->input->post('ANAK_KE'),
-
-                'PERSALINAN' => $this->input->post('PERSALINAN'),
-
-                'RIWAYAT_MENYUSUI' => $this->input->post('RIWAYAT_MENYUSUI'),
-
-                'RIWAYAT_MAKAN_MINUM' => $this->input->post('RIWAYAT_MAKAN_MINUM'),
-
-                'ID_ORANG_TUA' => $this->input->post('ID_ORANG_TUA'),
-
-            );
-
-            $day = date("Y-m-d");
-
-            date_default_timezone_set('Asia/Jakarta');
-
-            $jam = date("H:m");
-
-            $data_reg = array(
-
-                'NO_MEDREG' => $this->input->post('NO_MEDREG'),
-
-                'ID_BIDAN' => $_SESSION['id_pengguna'],
-
-                'TANGGAL_KAJIAN' => $day,
-
-                'JAM' => $jam,
-
-                'ID_ANAK' => $this->input->post('ID_ANAK'),
-
-            );
+                    );
+                }
+            }
 
             $this->Management_model->insert_anak($data);
 
@@ -634,6 +584,7 @@ class Management_controller extends CI_Controller
         redirect('Management_controller/show_data_ortu');
 
     }
+
 
 
 
