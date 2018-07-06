@@ -9,6 +9,60 @@
 </section>
 <div class="container" style="margin-top: 20px">
 <!--        <div class="col-md-6">-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('form[id="contactForm"]').validate({
+                    rules: {
+                        ID_ORANG_TUA: 'required',
+                        NAMA_IBU: 'required',
+                        NAMA_AYAH: 'required',
+                        TGL_LAHIR_IBU: 'required',
+                        TGL_LAHIR_AYAH: 'required',
+                        PEKERJAAN_IBU: 'required',
+                        PEKERJAAN_AYAH: 'required',
+                        AGAMA_IBU: 'required',
+                        AGAMA_AYAH: 'required',
+                        PENDIDIKAN_AKHIR_IBU: 'required',
+                        PENDIDIKAN_AKHIR_AYAH: 'required',
+                        ALAMAT_IBU: 'required',
+                        ALAMAT_AYAH: 'required',
+                        NO_TELP_IBU: {
+                            required: true,
+                            number: true
+                        },
+                        NO_TELP_AYAH: {
+                            required: true,
+                            number: true
+                        }
+                    },
+                    messages: {
+                        ID_ORANG_TUA: 'Id Orang tua tidak boleh kosong',
+                        NAMA_IBU: 'Nama Ibu tidak boleh kosong',
+                        NAMA_AYAH: 'Nama Ayah tidak boleh kosong',
+                        TGL_LAHIR_IBU: 'Tgl Lahir Ibu tidak boleh kosong',
+                        TGL_LAHIR_AYAH: 'Tgl Lahir Ayah tidak boleh kosong',
+                        PEKERJAAN_IBU: 'Pekerjaan Ibu tidak boleh kosong',
+                        PEKERJAAN_AYAH: 'Pekerjaan Ayah tidak boleh kosong',
+                        AGAMA_IBU: 'Agama Ibu tidak boleh kosong',
+                        AGAMA_AYAH: 'Agama Ayah tidak boleh kosong',
+                        PENDIDIKAN_AKHIR_IBU: 'Pendidikan Akhir Ibu tidak boleh kosong',
+                        PENDIDIKAN_AKHIR_AYAH: 'Pendidikan Akhir Ayah tidak boleh kosong',
+                        ALAMAT_IBU: 'Alamat Ibu tidak boleh kosong',
+                        ALAMAT_AYAH: 'Alamat Ayah tidak boleh kosong',
+                        NO_TELP_IBU: 'Nomor Telp. Ibu tidak boleh kosong',
+                        NO_TELP_AYAH: 'Nomor Telp Ayah tidak boleh kosong'
+                    },
+                    submitHandler: function(form){
+                        form.submit();
+                    },
+                    errorPlacement: function(error, element){
+                        error.appendTo(element.parent());
+                        // alert(element.parent().children('label').attr("name"));
+                        //element.parent().children('label').text(error.text());
+                    }
+                });
+            });
+        </script>
         <form method=post name="sentMessage" id="contactForm" action="<?php echo base_url('Management_controller/tambah_data_ortu');?>" novalidate>
             <div class="row">
                 <div class="col-sm-2"></div>
@@ -17,7 +71,7 @@
                         <input type="text" name="ID_ORANG_TUA" class="form-control"
                                id="ID_ORANG_TUA" required
                                data-validation-required-message="Isikan ID" />
-                        <label for="name" class=""> ID </label>
+                        <label name="id_label" for="name" class=""> ID </label>
                         <p class="help-block"></p>
                     </div>
                 </div>

@@ -34,7 +34,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/FixedHeader/3.1.3/js/dataTables.FixedHeader.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.dataTables.min.js"></script>
- <script type="text/javascript" src="<?php echo base_url('assets/ckeditor/ckeditor.js');?>"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/ckeditor/ckeditor.js');?>"></script>
 <script type="text/javascript">
     $(document).ready( function () {
 		$('.addImunisasi').click(function(){
@@ -142,6 +143,7 @@
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/show_data_bidan')?>">Data Bidan</a></li>
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('User_controller/show_data_user')?>">Data User</a></li>
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/lihat_artikel')?>">Data Artikel</a></li>
+                                <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/cetal_laporan')?>">Cetak Laporan</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

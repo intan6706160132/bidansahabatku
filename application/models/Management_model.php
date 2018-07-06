@@ -423,4 +423,13 @@ class Management_model extends CI_Model
         }
     }
 
+    public function get_laporan_anak($id_anak){
+        $data = array();
+        $this->db->from('anak');
+        $this->db->where('ID_ANAK', $id_anak);
+        $data['data_anak'] = $this->db->get()->result_array();
+        $this->db->from('anak');
+        $this->db->where('ID_ANAK', $id_anak);
+    }
+
 }
