@@ -25,7 +25,7 @@
                 function(returnData){
                     var res = JSON.parse(returnData);
                     $('#id_pengguna').empty();
-                    $('#id_pengguna').append('<option value="null">-- ID Pengguna --</option>');
+                    $('#id_pengguna').append('<option value="">-- ID Pengguna --</option>');
                     for(var i = 0; i < res.length; i++){
                         $('#id_pengguna').append($('<option>', 
                             {
@@ -39,20 +39,8 @@
         });
     } );
 
-    var password = document.getElementById("password")
-      , confirm_password = document.getElementById("confirm_password");
-
-    function validatePassword(){
-      if(password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match");
-      } else {
-        confirm_password.setCustomValidity('');
-      }
-    }
-
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
 </script>
+
 <title>Data User</title>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 <section id="inner-headline">
@@ -80,6 +68,40 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('form[id="form-input"]').validate({
+                    rules: {
+                        id_user: 'required',
+                        username: 'required',
+                        password: 'required',
+                        password_re: {
+                            required: true,
+                            equalTo: "#usrpassword"
+                        },
+                        status: 'required',
+                        id_pengguna: 'required',
+                    },
+                    messages: {
+                        id_user: 'ID user tidak boleh kosong',
+                        username: 'Username tidak boleh kosong',
+                        password: 'Password tidak boleh kosong',
+                        password_re: 'Password tidak cocok',
+                        status: 'Status harus dipilih',
+                        id_pengguna: 'Id Pengguna harus dipilih',
+                    },
+                    submitHandler: function(form){
+                        form.submit();
+                    },
+                    errorPlacement: function(error, element){
+                        error.css({'margin-left' : 200, 'font-size': 10});
+                        error.appendTo(element.parent());
+                        // alert(element.parent().children('label').attr("name"));
+                        //element.parent().children('label').text(error.text());
+                    }
+                });
+            });
+        </script>
 
             <form method="post" action="<?php echo base_url('User_controller/input_data_user');?>" id="form-input" class="form" style="display:none">
                 <div class="form-group">
@@ -95,23 +117,23 @@
                 </div>
                 <div class="input-field">
                     <label for="id_user" class=""> ID User </label>
-                    <input type="text" name="id_user" class="form-control" readonly="readonly" value="<?php echo $id_user;?>" 
+                    <input type="text" name="id_user" id="id_user" class="form-control" readonly="readonly" value="<?php echo $id_user;?>"
                            required data-validation-required-message="ID User tidak boleh kosong" />
                     <p class="help-block"></p>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="username" class="form-control" required
+                    <input type="text" name="username" id="username" class="form-control" required
                            data-validation-required-message="Username Tidak boleh kosong" />
                     <label for="username" class=""> Username </label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="password" name="password" class="form-control"
+                    <input type="password" id="usrpassword" name="password" class="form-control"
                     required data-validation-required-message="Password tidak boleh kosong" />
                     <p class="help-block"></p>
                     <label for="password" class=""> Password </label>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password-re" class="form-control"
+                    <input type="password" name="password_re" id="repassword" class="form-control"
                     required data-validation-required-message="Password ulang tidak boleh kosong" id="confirm_password" />
                     <div class="help-block"></div>
                     <label for="password-re" class=""> Password Ulang </label>
@@ -119,7 +141,7 @@
                 <div class="form-group">
                     <label for="name" class=""> Status User </label>
                     <select id="status" name="status" class="form-control">
-                        <option value="null">-- Status User --</option>
+                        <option value="">-- Status User --</option>
                         <option value="bidan">Bidan</option>
                         <option value="admin">Admin</option>
                         <option value="ortu">Orang Tua</option>
@@ -128,7 +150,7 @@
                 <div class="form-group">
                     <label for="name" class=""> ID Pengguna </label>
                     <select id="id_pengguna" name="id_pengguna" class="form-control">
-                        <option value="null">-- ID Pengguna --</option>
+                        <option value="">-- ID Pengguna --</option>
                     </select>
                 </div>
                 <div class="form-group">

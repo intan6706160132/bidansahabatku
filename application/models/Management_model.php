@@ -272,7 +272,7 @@ class Management_model extends CI_Model
             'BBL' => $data['BBL'],
             'TBL' => $data['TBL'],
             'LK' => $data['LK'],
-            'ANAK_KE' => $data('ANAK_KE'),
+            'ANAK_KE' => $data['ANAK_KE'],
             'PERSALINAN' => $data['PERSALINAN'],
             'RIWAYAT_MENYUSUI' => $data['RIWAYAT_MENYUSUI'],
             'RIWAYAT_MAKAN_MINUM' => $data['RIWAYAT_MAKAN_MINUM'],

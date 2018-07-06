@@ -39,8 +39,8 @@
                         ID_ORANG_TUA: 'Id Orang tua tidak boleh kosong',
                         NAMA_IBU: 'Nama Ibu tidak boleh kosong',
                         NAMA_AYAH: 'Nama Ayah tidak boleh kosong',
-                        TGL_LAHIR_IBU: 'Tgl Lahir Ibu tidak boleh kosong',
-                        TGL_LAHIR_AYAH: 'Tgl Lahir Ayah tidak boleh kosong',
+                        TGL_LAHIR_IBU: 'Tgl Lahir tidak boleh kosong',
+                        TGL_LAHIR_AYAH: 'Tgl Lahir tidak boleh kosong',
                         PEKERJAAN_IBU: 'Pekerjaan Ibu tidak boleh kosong',
                         PEKERJAAN_AYAH: 'Pekerjaan Ayah tidak boleh kosong',
                         AGAMA_IBU: 'Agama Ibu tidak boleh kosong',
@@ -49,13 +49,14 @@
                         PENDIDIKAN_AKHIR_AYAH: 'Pendidikan Akhir Ayah tidak boleh kosong',
                         ALAMAT_IBU: 'Alamat Ibu tidak boleh kosong',
                         ALAMAT_AYAH: 'Alamat Ayah tidak boleh kosong',
-                        NO_TELP_IBU: 'Nomor Telp. Ibu tidak boleh kosong',
-                        NO_TELP_AYAH: 'Nomor Telp Ayah tidak boleh kosong'
+                        NO_TELP_IBU: 'No. Telp Ibu tidak boleh kosong',
+                        NO_TELP_AYAH: 'No. Telp Ayah tidak boleh kosong'
                     },
                     submitHandler: function(form){
                         form.submit();
                     },
                     errorPlacement: function(error, element){
+                        error.css({'margin-left' : 120, 'font-size': 10});
                         error.appendTo(element.parent());
                         // alert(element.parent().children('label').attr("name"));
                         //element.parent().children('label').text(error.text());

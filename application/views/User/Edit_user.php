@@ -20,7 +20,40 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
-
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('form[id="form-input"]').validate({
+                    rules: {
+                        id_user: 'required',
+                        username: 'required',
+                        password: 'required',
+                        password_re: {
+                            required: true,
+                            equalTo: "#usrpassword"
+                        },
+                        status: 'required',
+                        id_pengguna: 'required',
+                    },
+                    messages: {
+                        id_user: 'ID user tidak boleh kosong',
+                        username: 'Username tidak boleh kosong',
+                        password: 'Password tidak boleh kosong',
+                        password_re: 'Password tidak cocok',
+                        status: 'Status harus dipilih',
+                        id_pengguna: 'Id Pengguna harus dipilih',
+                    },
+                    submitHandler: function(form){
+                        form.submit();
+                    },
+                    errorPlacement: function(error, element){
+                        error.css({'margin-left' : 200, 'font-size': 10});
+                        error.appendTo(element.parent());
+                        // alert(element.parent().children('label').attr("name"));
+                        //element.parent().children('label').text(error.text());
+                    }
+                });
+            });
+        </script>
             <form method="post" action="<?php echo base_url('User_controller/edit_data_user');?>" id="form-input" class="form">
                 <div class="form-group">
                     <div style="height: auto;
@@ -56,17 +89,17 @@
                     <label for="username" class=""> Username </label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="password" name="password" class="form-control"
+                    <input type="password" id="usrpassword" name="password" class="form-control"
                     required data-validation-required-message="Password tidak boleh kosong" value="<?php echo $data_user['PASSWORD'];?>" />
                     <p class="help-block"></p>
                     <label for="password" class=""> Password </label>
                 </div>
                 <div class="input-field">
-                    <input type="password" name="password-re" class="form-control"
+                    <input type="password" name="password_re" class="form-control"
                     required data-validation-required-message="Password ulang tidak boleh kosong" value="<?php echo $data_user['PASSWORD'];?>" 
                      id="confirm_password" />
                     <div class="help-block"></div>
-                    <label for="password-re" class=""> Password Ulang </label>
+                    <label for="password_re" class=""> Password Ulang </label>
                 </div>
                 <div class="form-group">
                     <label for="name" class=""> Status User </label>

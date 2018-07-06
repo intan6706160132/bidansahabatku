@@ -454,6 +454,7 @@ class Management_controller extends CI_Controller
         if (isset($_POST) && !empty($_POST)) {
 
             $data = array(
+                'ID_ANAK' => $this->input->post('ID_ANAK'),
 
                 'NAMA_ANAK' => $this->input->post('NAMA_ANAK'),
 

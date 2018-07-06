@@ -20,6 +20,44 @@ $pd = array('D3','S1','S2','S3');
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('form[id="contactForm"]').validate({
+                    rules: {
+                        ID_BIDAN: 'required',
+                        NAMA_BIDAN: 'required',
+                        TEMPAT_LHR_BIDAN: 'required',
+                        TGL_LHR_BIDAN: 'required',
+                        ALAMAT_BIDAN: 'required',
+                        NO_TELP_BIDAN: {
+                            required: true,
+                            number: true
+                        },
+                        PENDIDIKAN_TERAKHIR: 'required',
+                        NAMA_PT: 'required'
+                    },
+                    messages: {
+                        ID_BIDAN: 'Id bidan tidak boleh kosong',
+                        NAMA_BIDAN: 'Nama bidan tidak boleh kosong',
+                        TEMPAT_LHR_BIDAN: 'Tempat lahir tidak boleh kosong',
+                        TGL_LHR_BIDAN: 'Tanggal lahir tidak boleh kosong',
+                        ALAMAT_BIDAN: 'Alamat tidak boleh kosong',
+                        NO_TELP_BIDAN: 'No. Telp tidak boleh kosong',
+                        PENDIDIKAN_TERAKHIR: 'Pendidikan tidak boleh kosong',
+                        NAMA_PT: 'Perguruan asal tidak boleh kosong'
+                    },
+                    submitHandler: function(form){
+                        form.submit();
+                    },
+                    errorPlacement: function(error, element){
+                        error.css({'margin-left' : 200, 'font-size': 10});
+                        error.appendTo(element.parent());
+                        // alert(element.parent().children('label').attr("name"));
+                        //element.parent().children('label').text(error.text());
+                    }
+                });
+            });
+        </script>
             <form name="sentMessage" id="contactForm" method="post" action="<?php echo base_url('Management_controller/update_data_bidan');?>" novalidate>
                 <div class="input-field">
                     <input type="text" name="ID_BIDAN" class="form-control"
