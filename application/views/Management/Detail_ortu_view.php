@@ -146,7 +146,7 @@
 
                             <td><?php echo $i;?></td>
 
-                            <td> <a href="<?php echo base_url('Management_controller/show_detail_anak/'.$anak['ID_ANAK'])?>" style="cursor: pointer;"><?php echo ucwords($anak['NAMA_ANAK']);?></a></td>
+                            <td> <a href="<?php echo base_url('Management_controller/show_detail_anak/'.$anak['ID_ANAK'])?>" style="cursor: pointer;"><?php echo ucwords($anak['NAMA_ANAK']) ." (".$anak['ANAK_KE'].")";?></a></td>
 
                             <td><?php echo ucwords($anak['TEMPAT_LAHIR_ANAK']);?>, <?php echo $anak['TGL_LAHIR'];?></td>
 

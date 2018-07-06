@@ -221,7 +221,23 @@ class Management_controller extends CI_Controller
 
     }
 
+    function show_tambah_data_anak_admin($id_ortu)
 
+    {
+
+        $data['data_ortu'] = $this->Management_model->getOrtu($id_ortu);
+
+        $data['id_anak'] = $this->Management_model->get_id_anak($id_ortu);
+
+        $data['data_bidan'] = $this->Management_model->get_data_bidan();
+
+        $this->load->view('Templates/Header', $data);
+
+        $this->load->view('Management/Tambah_data_anak_admin', $data);
+
+        $this->load->view('Templates/Footer', $data);
+
+    }
 
     function show_detail_ortu($id_ortu)
 
@@ -526,20 +542,36 @@ class Management_controller extends CI_Controller
             date_default_timezone_set('Asia/Jakarta');
 
             $jam = date("H:m");
+            if (isset($_SESSION['status']) && (($_SESSION['status'] == "admin") || ($_SESSION['status'] == "bidan"))) {
+                if ($_SESSION['status'] == "admin") {
+                    $data_reg = array(
 
-            $data_reg = array(
+                        'NO_MEDREG' => $this->input->post('NO_MEDREG'),
 
-                'NO_MEDREG' => $this->Management_model->get_no_medreg(),
+                        'ID_BIDAN' => $_SESSION['id_pengguna'],
 
-                'ID_BIDAN' => $_SESSION['id_pengguna'],
+                        'TANGGAL_KAJIAN' => $day,
 
-                'TANGGAL_KAJIAN' => $day,
+                        'JAM' => $jam,
 
-                'JAM' => $jam,
+                        'ID_ANAK' => $this->input->post('ID_ANAK'),
+                    );
+                } else if ($_SESSION['status'] == "bidan") {
+                    $data_reg = array(
 
-                'ID_ANAK' => $this->input->post('ID_ANAK'),
+                        'NO_MEDREG' => $this->Management_model->get_no_medreg(),
 
-            );
+                        'ID_BIDAN' => $_SESSION['id_pengguna'],
+
+                        'TANGGAL_KAJIAN' => $day,
+
+                        'JAM' => $jam,
+
+                        'ID_ANAK' => $this->input->post('ID_ANAK'),
+
+                    );
+                }
+            }
 
             $this->Management_model->insert_anak($data);
 
@@ -552,6 +584,7 @@ class Management_controller extends CI_Controller
         redirect('Management_controller/show_data_ortu');
 
     }
+
 
 
 

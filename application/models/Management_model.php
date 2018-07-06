@@ -15,7 +15,7 @@ class Management_model extends CI_Model
         $query = $this->db->query($str);
         $data = $query->result_array();
         for($i = 0; $i < $query->num_rows(); $i++){
-            $str = "SELECT anak.NAMA_ANAK FROM anak WHERE anak.ID_ORANG_TUA = '".$data[$i]['ID_ORANG_TUA']."'";
+            $str = "SELECT anak.ID_ANAK, anak.NAMA_ANAK, anak.ANAK_KE FROM anak WHERE anak.ID_ORANG_TUA = '".$data[$i]['ID_ORANG_TUA']."' order by anak.ANAK_KE";
             $data[$i]['DATA_ANAK'] = $this->db->query($str)->result_array();
         }
         return $data;
@@ -40,7 +40,7 @@ class Management_model extends CI_Model
     }
 
     public function get_data_anak($id_ortu){
-        $result = $this->db->query("SELECT * FROM `anak` WHERE ID_ORANG_TUA='" . $id_ortu . "'");
+        $result = $this->db->query("SELECT * FROM `anak` WHERE ID_ORANG_TUA='" . $id_ortu . "' order by ANAK_KE");
         if ($result) {
             return $result->result_array();
         } else {
@@ -150,7 +150,7 @@ class Management_model extends CI_Model
         $med = "";
         $jum = $this->db->query("select COUNT(NO_MEDREG) JLH from pengkajian")->row_array();
         if($jum['JLH'] == "NULL"){
-            $med = "00.00.01";
+            $med = "00.25.01";
         }
         $jlh = $jum['JLH'];
         $jlh++;
@@ -163,11 +163,11 @@ class Management_model extends CI_Model
         }elseif(strlen((string)$jlh) > 3) {
             $med = "00.".substr($str, 0,1).".".substr($str, 2,3);
         }elseif(strlen((string)$jlh) > 2) {
-            $med = "00.0".substr($str, 0).".".substr($str, 1,2);
+            $med = "00.2".substr($str, 0).".".substr($str, 1,2);
         }else if(strlen((string)$jlh) > 1){
-            $med = "00.00.".$str;
+            $med = "00.25.".$str;
         }else{
-            $med = "00.00.0".$str;
+            $med = "00.25.0".$str;
         }
         return $med;
     }
