@@ -10,6 +10,51 @@
 <div class="container" style="margin-top: 20px">
     <div class="row">
         <!--        <div class="col-md-6">-->
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('form[id="contactForm"]').validate({
+                    rules: {
+                        NO_MEDREG: 'required',
+                        ID_ANAK: 'required',
+                        NAMA_ANAK: 'required',
+                        TEMPAT_LAHIR_ANAK: 'required',
+                        TGL_LAHIR: 'required',
+                        JK: 'required',
+                        BBL: {required: true, number: true},
+                        TBL: {required: true, number: true},
+                        LK: {required: true, number: true},
+                        ANAK_KE: {required: true, number: true},
+                        PERSALINAN: 'required',
+                        RIWAYAT_MENYUSUI: 'required',
+                        RIWAYAT_MAKAN_MINUM: 'required'
+                    },
+                    messages: {
+                        NO_MEDREG: 'No. MedReg tidak boleh kosong',
+                        ID_ANAK: 'Id Anak tidak boleh kosong',
+                        NAMA_ANAK: 'Nama tidak boleh kosong',
+                        TEMPAT_LAHIR_ANAK: 'Tempat lahir tidak boleh kosong',
+                        TGL_LAHIR: 'Tgl. lahir tidak boleh kosong',
+                        JK: 'Jenis kelamin tidak boleh kosong',
+                        BBL: 'Berat badan lahir tidak boleh kosong dan hanya angka',
+                        TBL: 'Tinggi badan lahir tidak boleh kosong dan hanya angka',
+                        LK: 'Lingkar kepala tidak boleh kosong dan hanya angka',
+                        ANAK_KE: 'Urutan anak tidak boleh kosong dan hanya angka',
+                        PERSALINAN: 'Proses persalianan harus dipilih',
+                        RIWAYAT_MENYUSUI: 'Riwayat menyusui harus dipilih',
+                        RIWAYAT_MAKAN_MINUM: 'Riwayat makan dan minum tidak boleh kosong'
+                    },
+                    submitHandler: function(form){
+                        form.submit();
+                    },
+                    errorPlacement: function(error, element){
+                        error.css({'margin-left' : 300, 'font-size': 10});
+                        error.appendTo(element.parent());
+                        // alert(element.parent().children('label').attr("name"));
+                        //element.parent().children('label').text(error.text());
+                    }
+                });
+            });
+        </script>
         <form method=post name="sentMessage" id="contactForm" action="<?php echo base_url('Management_controller/update_data_anak');?>" novalidate>
             <div class="col-sm-12">
                 <div class="input-field" hidden>
