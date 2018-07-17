@@ -143,7 +143,6 @@
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/show_data_bidan')?>">Data Bidan</a></li>
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('User_controller/show_data_user')?>">Data User</a></li>
                                 <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/lihat_artikel')?>">Data Artikel</a></li>
-                                <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/cetal_laporan')?>">Cetak Laporan</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -153,6 +152,7 @@
                                 <li><a class="waves-effect waves-dark" href="<?php $title = "imunisasi"; echo base_url('Layanan_controller/show_layanan_bayi/'.$title)?>">Imunisasi Bayi</a></li>
                             </ul>
                         </li>
+                        <li><a class="waves-effect waves-dark" href="<?php echo base_url('Management_controller/show_laporan')?>">Cetak Laporan</a></li>
                     <?php 
                             }else if($_SESSION['status'] == "bidan"){
                     ?>

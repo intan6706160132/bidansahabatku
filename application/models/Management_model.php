@@ -423,13 +423,25 @@ class Management_model extends CI_Model
         }
     }
 
-    public function get_laporan_anak($id_anak){
+    public function get_list_anak(){
         $data = array();
+        $sql = "SELECT 
+                    orang_tua.ID_ORANG_TUA,
+                    orang_tua.NAMA_IBU,
+                    anak.NAMA_ANAK,
+                    anak.ANAK_KE 
+                FROM orang_tua 
+                JOIN anak ON anak.ID_ORANG_TUA = orang_tua.ID_ORANG_TUA";
+        return $data = $this->db->query($sql)->result_array();
+    }
+
+    public function get_laporan_anak($id_anak = ""){
+        $data = array();
+        $this->db->select('*');
         $this->db->from('anak');
+        $this->db->join('orang_tua', 'orang_tua.ID_ORANG_TUA = anak.ID_ORANG_TUA');
         $this->db->where('ID_ANAK', $id_anak);
-        $data['data_anak'] = $this->db->get()->result_array();
-        $this->db->from('anak');
-        $this->db->where('ID_ANAK', $id_anak);
+        return $this->db->get()->row_array();
     }
 
 }

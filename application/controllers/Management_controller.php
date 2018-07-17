@@ -977,14 +977,26 @@ class Management_controller extends CI_Controller
 
     }
 
-    public function show_laporan($id_anak = null){
-        $data['laporan_anak'] = null;
-        if($id_anak != null){
-            $data['laporan_anak'] = $this->Management_model->get_laporan_anak($id_anak);
-        }
+    public function show_laporan(){
+        $data['data_ortu'] = $this->Management_model->get_data_ortu();
+        $data['id_ortu'] = $this->Management_model->get_id_ortu();
         $this->load->view('Templates/Header');
         $this->load->view('Management/view_laporan',$data);
         $this->load->view('Templates/Footer');
+    }
+
+    public function show_laporan_anak($id_anak = ""){
+        if($id_anak != ""){
+            $data = array();
+            $data['data_anak'] = $this->Management_model->get_laporan_anak($id_anak);
+            $this->load->view('Templates/Header');
+            $this->load->view('Management/view_laporan_anak',$data);
+            $this->load->view('Templates/Footer');
+        }else{
+            $this->load->view('Templates/Header');
+            $this->load->view('Management/view_laporan_anak');
+            $this->load->view('Templates/Footer');
+        }
     }
 }
 
