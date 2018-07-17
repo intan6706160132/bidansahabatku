@@ -15,6 +15,7 @@ class Management_controller extends CI_Controller
         $this->load->model('User_model');
 
         $this->load->model('Management_model');
+        $this->load->model('Layanan_model');
 
         $this->load->database();
 
@@ -989,6 +990,7 @@ class Management_controller extends CI_Controller
         if($id_anak != ""){
             $data = array();
             $data['data_anak'] = $this->Management_model->get_laporan_anak($id_anak);
+            $data['data_pelayanan'] = $this->Layanan_model->get_data_layanan_bayi($id_anak);
             $this->load->view('Templates/Header');
             $this->load->view('Management/view_laporan_anak',$data);
             $this->load->view('Templates/Footer');
